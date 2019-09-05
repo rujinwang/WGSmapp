@@ -1,0 +1,36 @@
+---
+title: 'WGSmapp Vignette'
+author: "Rujin Wang, Danyu Lin, Yuchao Jiang"
+date: "`r format(Sys.Date())`"
+output:
+  html_document:
+    highlight: pygments
+    toc: true
+---
+# Mappability
+This package provides whole-genome mappability tracks on human hg19/hg38 assembly. We employed the 100-mers mappability track from the ENCODE Project and computed weighted average of the mappability scores if multiple ENCODE regions overlap with the same bin.
+```{r, message=FALSE}
+library(WGSmapp)
+data("mapp_hg19")
+mapp_hg19
+```
+
+
+# Blacklist regions
+“Blacklist” bins, including [segmental duplication regions](http://humanparalogy.gs.washington.edu/build37/data/GRCh37GenomicSuperDup.tab) and [gaps in reference assembly](https://gist.github.com/leipzig/6123703) from telomere, centromere, and/or heterochromatin regions are included.
+
+```{r}
+library(WGSmapp)
+# Get segmental duplication regions
+seg.dup = read.table(system.file("extdata", "GRCh37GenomicSuperDup.tab", package = "WGSmapp"), head = TRUE)
+# Get hg19 gaps
+gaps = read.table(system.file("extdata", "hg19gaps.txt", package = "WGSmapp"), head = TRUE)
+
+head(seg.dup)
+head(gaps)
+```
+
+
+# BAM files
+The dataset consists of three assembled .bam files of single-cell whole genome sequencing from 10X Genomics Single-Cell CNV solution for illustration purposes. These three cells are from section E of five adjacent tumor dissections of a breast cancer patient. Corresponding cellular barcode tags are "AAAGCAATCTGACGCG", "GCAGTTACACTGTATG", and "CTCGTCACAGGTTAAA".
+
