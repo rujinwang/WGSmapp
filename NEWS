@@ -1,3 +1,6 @@
 # Package: WGSmapp
+Changes in version 0.99.1
++ Remove WGSmapp.Rproj and add GenomicRanges dependency
+
 Changes in version 0.99.0
 + WGSmapp getting ready for submission to Bioc

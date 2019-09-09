@@ -8,6 +8,8 @@
 #' @format A GRanges object with 21591667 ranges and mappability scores
 #'
 #' @keywords datasets
+#' 
+#' @import GenomicRanges
 #'
 "mapp_hg19"
 
@@ -21,5 +23,7 @@
 #' @format A GRanges object with 21584930 ranges and mappability scores
 #'
 #' @keywords datasets
+#' 
+#' @import GenomicRanges
 #'
 "mapp_hg38"
