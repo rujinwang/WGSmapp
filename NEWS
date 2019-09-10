@@ -1,4 +1,6 @@
-# Package: WGSmapp
+Changes in version 0.99.2
++ Bump version number to trigger a new build
+
 Changes in version 0.99.1
 + Remove WGSmapp.Rproj and add GenomicRanges dependency
 
