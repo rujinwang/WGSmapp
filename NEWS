@@ -1,3 +1,6 @@
+Changes in version 0.99.3
++ Add seg region file for hg38
+
 Changes in version 0.99.2
 + Bump version number to trigger a new build
 
