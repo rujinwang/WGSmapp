@@ -12,7 +12,7 @@
 
 <meta name="author" content="Rujin Wang, Danyu Lin, Yuchao Jiang" />
 
-<meta name="date" content="2019-09-05" />
+<meta name="date" content="2019-10-05" />
 
 <title>WGSmapp Vignette</title>
 
@@ -228,14 +228,17 @@ summary {
 
 <h1 class="title toc-ignore">WGSmapp Vignette</h1>
 <h4 class="author">Rujin Wang, Danyu Lin, Yuchao Jiang</h4>
-<h4 class="date">2019-09-05</h4>
+<h4 class="date">2019-10-05</h4>
 
 </div>
 
 <div id="TOC">
 <ul>
 <li><a href="#mappability">Mappability</a></li>
-<li><a href="#blacklist-regions">Blacklist regions</a></li>
+<li><a href="#blacklist-regions">Blacklist regions</a><ul>
+<li><a href="#hg19">hg19</a></li>
+<li><a href="#hg38">hg38</a></li>
+</ul></li>
 <li><a href="#bam-files">BAM files</a></li>
 </ul>
 </div>
@@ -265,7 +268,9 @@ mapp_hg19</code></pre></div>
 </div>
 <div id="blacklist-regions" class="section level1">
 <h1>Blacklist regions</h1>
-<p>“Blacklist” bins, including <a href="http://humanparalogy.gs.washington.edu/build37/data/GRCh37GenomicSuperDup.tab">segmental duplication regions</a> and <a href="https://gist.github.com/leipzig/6123703">gaps in reference assembly</a> from telomere, centromere, and/or heterochromatin regions are included.</p>
+<div id="hg19" class="section level2">
+<h2>hg19</h2>
+<p>For hg19 reference genome, “blacklist” bins, including <a href="http://humanparalogy.gs.washington.edu/build37/data/GRCh37GenomicSuperDup.tab">segmental duplication regions</a> and <a href="https://gist.github.com/leipzig/6123703">gaps in reference assembly</a> from telomere, centromere, and/or heterochromatin regions are included.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(WGSmapp)
 <span class="co"># Get segmental duplication regions</span>
 seg.dup =<span class="st"> </span><span class="kw">read.table</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;GRCh37GenomicSuperDup.tab&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;WGSmapp&quot;</span>), <span class="dt">head =</span> <span class="ot">TRUE</span>)
@@ -316,6 +321,47 @@ gaps =<span class="st"> </span><span class="kw">read.table</span>(<span class="k
 ## 4  85  chr1   13219912  13319912  154 N   100000          contig     no
 ## 5  89  chr1   17125658  17175658  196 N    50000           clone    yes
 ## 6 101  chr1   29878082  30028082  337 N   150000          contig     no</code></pre>
+</div>
+<div id="hg38" class="section level2">
+<h2>hg38</h2>
+<p>For hg38 reference genome, “blacklist” bins, including <a href="http://humanparalogy.gs.washington.edu/build38/data/GRCh38GenomicSuperDup.tab">segmental duplication regions</a> and <a href="https://software.broadinstitute.org/gatk/documentation/article?id=11010">gaps in reference assembly</a> from telomere, centromere, and/or heterochromatin regions are also incorporated in the package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(WGSmapp)
+<span class="co"># Get segmental duplication regions</span>
+seg.dup.hg38 =<span class="st"> </span><span class="kw">read.table</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;GRCh38GenomicSuperDup.tab&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;WGSmapp&quot;</span>))
+<span class="co"># Get hg38 gaps</span>
+gaps.hg38 =<span class="st"> </span><span class="kw">read.table</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;hg38gaps.txt&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;WGSmapp&quot;</span>))
+
+<span class="kw">head</span>(seg.dup.hg38)</code></pre></div>
+<pre><code>##     V1     V2     V3          V4 V5 V6   V7     V8     V9   V10 V11  V12
+## 1 chr1  10169  37148 chr1:180723  0  + chr1 180723 207666 26943   1 1000
+## 2 chr1 180723 207666  chr1:10169  0  + chr1  10169  37148 26979   1 1000
+## 3 chr1  88000 121417 chr1:265774  0  + chr1 265774 297956 32182   2 1000
+## 4 chr1 265774 297956  chr1:88000  0  + chr1  88000 121417 33417   2 1000
+## 5 chr1  88000  92392 chr1:355156  0  + chr1 355156 358335  3179   3 1000
+## 6 chr1 355156 358335  chr1:88000  0  + chr1  88000  92392  4392   3 1000
+##   V13 V14 V15 V16                         V17   V18 V19  V20   V21   V22
+## 1 N/A N/A N/A N/A align_both/0014/both0071547 27025  30  128 26897 26628
+## 2 N/A N/A N/A N/A align_both/0014/both0071547 27025  30  128 26897 26628
+## 3 N/A N/A N/A N/A align_both/0014/both0071548 33449  25 1299 32150 31941
+## 4 N/A N/A N/A N/A align_both/0014/both0071548 33449  25 1299 32150 31941
+## 5 N/A N/A N/A N/A align_both/0014/both0071549  4398   8 1225  3173  3104
+## 6 N/A N/A N/A N/A align_both/0014/both0071549  4398   8 1225  3173  3104
+##   V23 V24 V25       V26       V27         V28         V29
+## 1 269 164 105 0.9899989 0.9888959 0.010068396 0.010074269
+## 2 269 164 105 0.9899989 0.9888959 0.010068396 0.010074269
+## 3 209 133  76 0.9934992 0.9927273 0.006529115 0.006532073
+## 4 209 133  76 0.9934992 0.9927273 0.006529115 0.006532073
+## 5  69  46  23 0.9782540 0.9757938 0.022067470 0.022109061
+## 6  69  46  23 0.9782540 0.9757938 0.022067470 0.022109061</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gaps.hg38)</code></pre></div>
+<pre><code>##    V1   V2       V3       V4  V5 V6    V7       V8  V9
+## 1 585 chr1        0    10000   1  N 10000 telomere  no
+## 2 586 chr1   207666   257666   5  N 50000   contig  no
+## 3 587 chr1   297968   347968   7  N 50000   contig  no
+## 4 589 chr1   535988   585988  10  N 50000   contig  no
+## 5 605 chr1  2702781  2746290  48  N 43509 scaffold yes
+## 6  85 chr1 12954384 13004384 224  N 50000 scaffold yes</code></pre>
+</div>
 </div>
 <div id="bam-files" class="section level1">
 <h1>BAM files</h1>

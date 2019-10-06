@@ -17,7 +17,8 @@ mapp_hg19
 
 
 # Blacklist regions
-“Blacklist” bins, including [segmental duplication regions](http://humanparalogy.gs.washington.edu/build37/data/GRCh37GenomicSuperDup.tab) and [gaps in reference assembly](https://gist.github.com/leipzig/6123703) from telomere, centromere, and/or heterochromatin regions are included.
+## hg19
+For hg19 reference genome, “blacklist” bins, including [segmental duplication regions](http://humanparalogy.gs.washington.edu/build37/data/GRCh37GenomicSuperDup.tab) and [gaps in reference assembly](https://gist.github.com/leipzig/6123703) from telomere, centromere, and/or heterochromatin regions are included.
 
 ```{r}
 library(WGSmapp)
@@ -28,6 +29,19 @@ gaps = read.table(system.file("extdata", "hg19gaps.txt", package = "WGSmapp"), h
 
 head(seg.dup)
 head(gaps)
+```
+
+## hg38
+For hg38 reference genome, “blacklist” bins, including [segmental duplication regions](http://humanparalogy.gs.washington.edu/build38/data/GRCh38GenomicSuperDup.tab) and [gaps in reference assembly](https://software.broadinstitute.org/gatk/documentation/article?id=11010) from telomere, centromere, and/or heterochromatin regions are also incorporated in the package.
+```{r}
+library(WGSmapp)
+# Get segmental duplication regions
+seg.dup.hg38 = read.table(system.file("extdata", "GRCh38GenomicSuperDup.tab", package = "WGSmapp"))
+# Get hg38 gaps
+gaps.hg38 = read.table(system.file("extdata", "hg38gaps.txt", package = "WGSmapp"))
+
+head(seg.dup.hg38)
+head(gaps.hg38)
 ```
 
 

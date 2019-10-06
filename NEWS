@@ -1,3 +1,6 @@
+Changes in version 0.99.4
++ Incorporate hg38gaps.txt
+
 Changes in version 0.99.3
 + Add seg region file for hg38
 
