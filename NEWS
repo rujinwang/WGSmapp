@@ -1,3 +1,6 @@
+Changes in version 0.99.6
++ Update R version Dependency to 3.6
+
 Changes in version 0.99.5
 + Fix NAs in seqlengths(mapp_hg38)
 
