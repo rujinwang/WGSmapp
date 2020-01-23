@@ -1,3 +1,6 @@
+Changes in version 0.99.7
++ Use lazy-loading of data
+
 Changes in version 0.99.6
 + Update R version Dependency to 3.6
 
