@@ -1,3 +1,6 @@
+Changes in version 0.99.8
++ Add mm10 blacklist regions
+
 Changes in version 0.99.7
 + Use lazy-loading of data
 
